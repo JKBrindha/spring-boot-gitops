@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: spring-boot-app
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/JKBrindha/spring-boot-gitops.git
+    targetRevision: main
+    path: helm/spring-boot-postgres
+    helm:
+      valueFiles:
+        - values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: spring-boot
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
