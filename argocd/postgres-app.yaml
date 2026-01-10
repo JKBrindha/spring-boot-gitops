@@ -13,8 +13,8 @@ spec:
     helm:
       values: |
         image:
-          registry: ghcr.io
-          repository: bitnami/postgresql
+          repository: ghcr.io/bitnami/postgresql
+ 
         auth:
           database: testdb
           username: postgres
