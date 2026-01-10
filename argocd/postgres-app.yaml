@@ -17,6 +17,12 @@ spec:
       values: |
         global:
           imageRegistry: ghcr.io
+          postgresql:
+            image:
+              registry: ghcr.io
+              repository: bitnami/postgresql
+              tag: 16.3.0
+
         image:
           registry: ghcr.io
           repository: bitnami/postgresql
