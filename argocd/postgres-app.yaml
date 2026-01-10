@@ -31,9 +31,9 @@ spec:
         volumePermissions:
           enabled: true
           image:
-            registry: ghcr.io
+            registry: docker.io
             repository: bitnami/os-shell
-            tag: latest
+            tag: 12-debian-12-r0
 
         auth:
           database: testdb
