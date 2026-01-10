@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: postgres
   namespace: argocd
+  annotations:
+    force-helm-render: "1"
+
 spec:
   project: default
 
