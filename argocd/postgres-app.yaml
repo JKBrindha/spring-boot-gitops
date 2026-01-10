@@ -13,8 +13,17 @@ spec:
     helm:
       values: |
         image:
-          repository: ghcr.io/bitnami/postgresql
- 
+          registry: ghcr.io
+          repository: bitnami/postgresql
+          tag: 16.3.0
+
+        volumePermissions:
+          enabled: true
+          image:
+            registry: ghcr.io
+            repository: bitnami/os-shell
+            tag: latest
+
         auth:
           database: testdb
           username: postgres
