@@ -12,8 +12,9 @@ spec:
     targetRevision: 15.5.21   # example, can be "latest"
     helm:
       values: |
-        global:
-          imageRegistry: ghcr.io
+        image:
+          registry: ghcr.io
+          repository: bitnami/postgresql
         auth:
           database: testdb
           username: postgres
