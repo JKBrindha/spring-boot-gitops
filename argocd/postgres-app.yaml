@@ -16,17 +16,18 @@ spec:
     helm:
       values: |
         global:
-          imageRegistry: ghcr.io
+          imageRegistry: docker.io
           postgresql:
             image:
-              registry: ghcr.io
+              registry: docker.io
               repository: bitnami/postgresql
               tag: 16.3.0
 
         image:
-          registry: ghcr.io
+          registry: docker.io
           repository: bitnami/postgresql
           tag: 16.3.0
+
 
         volumePermissions:
           enabled: false
