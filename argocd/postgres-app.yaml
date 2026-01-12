@@ -15,7 +15,7 @@ spec:
         image:
           registry: docker.io
           repository: bitnami/postgresql
-          tag: 16.4.0-debian-12-r25
+          tag: 16.1.0-debian-12-r18
 
         primary:
           persistence:
