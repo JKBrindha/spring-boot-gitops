@@ -11,9 +11,9 @@ image:
   # This sets the pull policy for images.
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "b615403a9dc42251a94407e1f388d9c786221d66"
+  tag: "a860feb78dd65ca8bc1673260bacb87b1cb51009"
 env:
-  POSTGRES_DB_URL: jdbc:postgresql://postgres-release-postgresql:5432/testdb
+  POSTGRES_DB_URL: jdbc:postgresql://postgres-postgresql:5432/testdb
   POSTGRES_USER: postgres
   
 
