@@ -11,7 +11,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "a860feb78dd65ca8bc1673260bacb87b1cb51009"
+  tag: "79b62eda41547e0aafb59c7c6ea0c74652e62fd5"
 env:
    SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/testdb
    SPRING_DATASOURCE_USERNAME: postgres
