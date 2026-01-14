@@ -5,22 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-
   source:
     repoURL: https://github.com/JKBrindha/spring-boot-gitops.git
     targetRevision: main
-    path: helm/spring-boot-postgres
+    path: helm/spring-boot
     helm:
       valueFiles:
         - values.yaml
-
   destination:
     server: https://kubernetes.default.svc
     namespace: spring-boot-postgres-demo
-
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

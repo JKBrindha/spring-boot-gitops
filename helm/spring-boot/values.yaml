@@ -13,8 +13,8 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "a860feb78dd65ca8bc1673260bacb87b1cb51009"
 env:
-  POSTGRES_DB_URL: jdbc:postgresql://postgres-postgresql:5432/testdb
-  POSTGRES_USER: postgres
+   SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/testdb
+   SPRING_DATASOURCE_USERNAME: postgres
   
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
