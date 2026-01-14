@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: postgresql
-    targetRevision: 18.2.0
+    repoURL: https://github.com/JKBrindha/spring-boot-gitops.git
+    path: helm/spring-boot-postgres     
+    targetRevision: main                
     helm:
       valueFiles:
-        - postgres-values.yaml
+        - postgres-values.yaml          
   destination:
     server: https://kubernetes.default.svc
     namespace: spring-boot-postgres-demo
@@ -19,5 +19,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
