@@ -1,15 +1,7 @@
-image:
-  registry: docker.io
-  repository: postgres
-  tag: "16"
-  pullPolicy: IfNotPresent
-
 auth:
-  enablePostgresUser: true
-  postgresPassword: postgres123
-  database: testdb
   username: postgres
-  password: postgres123
+  password: postgres
+  database: testdb
 
 primary:
   persistence:
@@ -17,6 +9,5 @@ primary:
     size: 8Gi
 
 service:
-  type: ClusterIP
   ports:
     postgresql: 5432
