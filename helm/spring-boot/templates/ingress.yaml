@@ -5,10 +5,11 @@ metadata:
   name: {{ include "spring-boot-postgres.fullname" . }}
   labels:
     {{- include "spring-boot-postgres.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
+ 
   annotations:
     kubernetes.io/ingress.class: nginx
     argocd.argoproj.io/health-check: "ignore"
+    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
 spec:
