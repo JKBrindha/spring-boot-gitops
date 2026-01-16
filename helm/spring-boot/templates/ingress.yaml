@@ -8,7 +8,7 @@ metadata:
  
   annotations:
     kubernetes.io/ingress.class: nginx
-    argocd.argoproj.io/health-check: "ignore"
+    argocd.argoproj.io/health-check: "true"
     {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
