@@ -6,7 +6,9 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/ignore-resource-health: |
+      Ingress
       networking.k8s.io/Ingress
+      spring-boot-postgres-demo/Ingress
 spec:
   project: default
   source:
