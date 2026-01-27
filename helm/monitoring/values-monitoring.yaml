@@ -1,0 +1,127 @@
+# ================================
+# GLOBAL
+# ================================
+fullnameOverride: monitoring
+
+global:
+  nodeSelector:
+    role: monitoring
+  tolerations:
+    - key: "dedicated"
+      operator: "Equal"
+      value: "monitoring"
+      effect: "NoSchedule"
+
+# ================================
+# PROMETHEUS
+# ================================
+prometheus:
+  prometheusSpec:
+    retention: 6h
+    scrapeInterval: 30s
+    evaluationInterval: 30s
+
+    nodeSelector:
+      role: monitoring
+    tolerations:
+      - key: dedicated
+        operator: Equal
+        value: monitoring
+        effect: NoSchedule
+
+    resources:
+      requests:
+        cpu: 200m
+        memory: 300Mi
+      limits:
+        cpu: 500m
+        memory: 500Mi
+
+    storageSpec: {}   # no PVC to save money
+
+# ================================
+# GRAFANA
+# ================================
+grafana:
+  enabled: true
+  adminPassword: admin123
+
+  nodeSelector:
+    role: monitoring
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: monitoring
+      effect: NoSchedule
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 200Mi
+    limits:
+      cpu: 300m
+      memory: 400Mi
+
+  persistence:
+    enabled: false
+
+# ================================
+# ALERTMANAGER
+# ================================
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    nodeSelector:
+      role: monitoring
+    tolerations:
+      - key: dedicated
+        operator: Equal
+        value: monitoring
+        effect: NoSchedule
+
+    resources:
+      requests:
+        cpu: 50m
+        memory: 100Mi
+      limits:
+        cpu: 200m
+        memory: 200Mi
+
+  storage: {}
+
+# ================================
+# NODE EXPORTER
+# ================================
+nodeExporter:
+  enabled: true
+
+# ================================
+# KUBE STATE METRICS
+# ================================
+kubeStateMetrics:
+  enabled: true
+
+# ================================
+# DISABLE HEAVY COMPONENTS
+# ================================
+kubeEtcd:
+  enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeProxy:
+  enabled: true
+
+# ================================
+# DEFAULT RULES
+# ================================
+defaultRules:
+  create: true
+  rules:
+    etcd: false
+    kubeScheduler: false
+    kubeControllerManager: false

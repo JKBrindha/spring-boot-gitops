@@ -1,0 +1,19 @@
+controller:
+  replicaCount: 2
+
+  nodeSelector:
+    role: infra
+
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 256Mi

@@ -1,0 +1,35 @@
+server:
+  nodeSelector:
+    role: infra
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+controller:
+  nodeSelector:
+    role: infra
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+repoServer:
+  nodeSelector:
+    role: infra
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+applicationSet:
+  nodeSelector:
+    role: infra
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule

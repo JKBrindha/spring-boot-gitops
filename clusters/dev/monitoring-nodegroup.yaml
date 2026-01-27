@@ -1,0 +1,23 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: devops-eks
+  region: us-east-2
+
+managedNodeGroups:
+  - name: monitoring-ng
+    instanceType: t3.micro
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 3
+
+    labels:
+      role: monitoring
+
+    taints:
+      - key: dedicated
+        value: monitoring
+        effect: NoSchedule
+
+    privateNetworking: false

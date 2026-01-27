@@ -1,0 +1,23 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: devops-eks
+  region: us-east-2
+
+managedNodeGroups:
+  - name: infra-ng
+    instanceType: t3.micro
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 2
+
+    labels:
+      role: infra
+
+    taints:
+      - key: dedicated
+        value: infra
+        effect: NoSchedule
+
+    privateNetworking: false

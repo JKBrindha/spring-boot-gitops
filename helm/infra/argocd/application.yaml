@@ -1,25 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgres
+  name: argocd
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
   source:
-    repoURL: https://github.com/JKBrindha/spring-boot-gitops.git
+    repoURL: https://github.com/YOUR-USERNAME/YOUR-REPO
     targetRevision: main
-    path: helm/postgres
+    path: infra/argocd
     helm:
       valueFiles:
-        - values-postgres.yaml
+        - values-argocd.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: spring-boot-postgres-demo
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
