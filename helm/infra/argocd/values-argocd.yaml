@@ -1,4 +1,4 @@
-server:
+global:
   nodeSelector:
     role: infra
   tolerations:
@@ -8,6 +8,15 @@ server:
       effect: NoSchedule
 
 controller:
+  nodeSelector:
+    role: infra
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+server:
   nodeSelector:
     role: infra
   tolerations:
@@ -26,6 +35,33 @@ repoServer:
       effect: NoSchedule
 
 applicationSet:
+  nodeSelector:
+    role: infra
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+notifications:
+  nodeSelector:
+    role: infra
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+dex:
+  nodeSelector:
+    role: infra
+  tolerations:
+    - key: dedicated
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+redis:
   nodeSelector:
     role: infra
   tolerations:
