@@ -40,17 +40,17 @@ spec:
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres
-                  key: postgres-password
+                  name: springboot-db-secret
+                  key: SPRING_DATASOURCE_PASSWORD
           command:
             - sh
             - -c
             - |
-              echo "Waiting for PostgreSQL..."
-              until pg_isready -h postgres -p 5432 -U postgres; do
+              echo "Waiting for RDS..."
+              until pg_isready -h springboot-postgres-db.ct26qwu60idx.us-east-2.rds.amazonaws.com -p 5432 -U appuser; do
                 sleep 5
               done
-              echo "PostgreSQL is ready"
+              echo "RDS is ready"
       containers:
         - name: {{ .Chart.Name }}
           {{- with .Values.securityContext }}
@@ -63,30 +63,12 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          env:
-            - name: SPRING_DATASOURCE_URL
-              value: {{ .Values.env.SPRING_DATASOURCE_URL | quote }}
-            - name: SPRING_DATASOURCE_USERNAME
-              value: {{ .Values.env.SPRING_DATASOURCE_USERNAME | quote }}
-            - name: SPRING_DATASOURCE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres
-                  key: postgres-password
-            - name: JAVA_OPTS
-              value: "-Xms256m -Xmx512m -XX:MaxMetaspaceSize=128m"
-
-          resources:
-                requests:
-                  cpu: "100m"
-                  memory: "256Mi"
-                limits:
-                  cpu: "500m"
-                  memory: "512Mi"
-
-
+          envFrom:
+            - secretRef:
+                name: springboot-db-secret
+          
           {{- with .Values.livenessProbe }}
-         livenessProbe:
+          livenessProbe:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           {{- with .Values.readinessProbe }}
