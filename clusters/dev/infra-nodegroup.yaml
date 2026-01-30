@@ -7,10 +7,10 @@ metadata:
 
 managedNodeGroups:
   - name: infra-ng
-    instanceType: t3.micro
-    desiredCapacity: 1
-    minSize: 1
-    maxSize: 2
+    instanceType: t3.small
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 3
 
     labels:
       role: infra

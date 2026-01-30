@@ -7,9 +7,9 @@ metadata:
 
 managedNodeGroups:
   - name: monitoring-ng
-    instanceType: t3.micro
-    desiredCapacity: 2
-    minSize: 2
+    instanceType: m7i-flex.large
+    desiredCapacity: 1
+    minSize: 1
     maxSize: 3
 
     labels:
